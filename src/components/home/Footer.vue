@@ -7,7 +7,7 @@
         class="text-center"
         cols="12"
       >
-        &copy; {{ new Date().getFullYear() }} — <strong>Awesome Shop</strong>
+        &copy; {{ new Date().getFullYear() }} — <strong>LazaKIL</strong>
       </v-col>
     </v-footer>
 </template>

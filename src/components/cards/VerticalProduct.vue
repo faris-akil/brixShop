@@ -2,7 +2,7 @@
   <v-card outlined>
     <v-img :src="product.image" height="200px"></v-img>
     <v-card-title>{{ product.name }}</v-card-title>
-    <v-card-subtitle>${{ product.price }}</v-card-subtitle>
+    <v-card-subtitle>RM{{ product.price }}</v-card-subtitle>
     <v-card-actions>
         <v-btn color="success" outlined @click="addToCart(index)"><v-icon left>mdi-plus</v-icon>Add To Cart</v-btn>
     </v-card-actions>

@@ -9,7 +9,7 @@
           {{ product.name }}
         </v-card-title>
         <v-card-subtitle>
-          {{ product.price }}
+          RM{{ product.price }}
         </v-card-subtitle>
         <v-card-actions>
           <v-btn
