@@ -2,7 +2,7 @@
     <v-container class="fill-height mb-12">
         <v-row>
             <v-col sm="10" offset-sm="1" md="8" offset-md="2">
-                <h2>Popular Products<v-btn text small color="primary">View All</v-btn></h2>
+                <h2>Popular Products<v-btn text small color="primary" to="store">View All</v-btn></h2>
             </v-col>
         </v-row>
         <v-row>
