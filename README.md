@@ -1,4 +1,4 @@
-# lazakil
+# BrixShop
 
 ## Project setup
 ```
