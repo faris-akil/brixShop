@@ -1,4 +1,4 @@
 module.exports = {
-  publicPath: '/lazakil/',
+  publicPath: '/',
   transpileDependencies: ["vuetify"]
 };
