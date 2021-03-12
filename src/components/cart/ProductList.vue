@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-row v-for="(product, index) in $store.state.products" :key="index">
+      <v-row v-for="(product, index) in $store.state.cart" :key="index">
           <HorizontalProduct :product="product" :index="index" :updateCart="removeFromCart" btnAction="remove"/>
       </v-row>
   </div>
@@ -14,8 +14,9 @@ export default {
         HorizontalProduct
     },
     methods: {
-        removeFromCart(){
-            
+        removeFromCart(val){
+            this.$store.commit("removeItemFromCart", val)
+            this.$store.commit('updateSnackBar', {show: true, variant: 'error', message: "Item removed from cart"})
         }
     }
 }

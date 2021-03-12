@@ -2,10 +2,10 @@
     <v-container>
         <v-row>
             <v-col sm="3" offset-lg="1">
-                <SideBar />
+                <SideBar @priceFilter="runFilter" @searchingProducts="searchProducts"/>
             </v-col>
             <v-col sm="9" lg="7">
-                <ProductDisplay />
+                <ProductDisplay :filter="filter" :search="search"/>
             </v-col>
         </v-row>
     </v-container>
@@ -19,6 +19,20 @@ export default {
     components: {
         SideBar,
         ProductDisplay
+    },
+    data(){
+        return {
+            filter: "any",
+            search: ""
+        }
+    },
+    methods: {
+        runFilter(events){
+            this.filter = events
+        },
+        searchProducts(query){
+            this.search = query
+        }
     }
 }
 </script>

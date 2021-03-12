@@ -6,10 +6,14 @@
       </div>
       <div class="d-flex flex-column justify-center">
         <v-card-title :class="$vuetify.breakpoint.xsOnly ? 'caption': 'subtitle-1'">
-          {{ product.name }}
+          {{ product.name }} 
         </v-card-title>
         <v-card-subtitle>
           RM{{ product.price }}
+          <br>
+          Quantity: {{product.quantity}}
+          <br>
+          Total: RM {{product.price * product.quantity}}
         </v-card-subtitle>
         <v-card-actions>
           <v-btn
@@ -18,7 +22,7 @@
             class="ml-4"
             outlined
             :small="$vuetify.breakpoint.smAndUp"
-            @click="updateCart(i)"
+            @click="updateCart(product)"
           >
             <v-icon v-if="$vuetify.breakpoint.smAndUp" small left>mdi-minus</v-icon>
             Remove <span v-if="$vuetify.breakpoint.smAndUp">From Cart</span> 
@@ -41,6 +45,13 @@ export default {
     btnAction: String,
     i: Number,
   },
+  computed: {
+    findObject(){
+      let obj =  this.$store.state.products.filter(item => item.id === this.product.itemId)
+      console.log(obj)
+      return obj[0]
+    }
+  }
 };
 </script>
 

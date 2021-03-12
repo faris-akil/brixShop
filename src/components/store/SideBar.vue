@@ -2,11 +2,22 @@
   <div>
     <v-sheet
       v-if="$vuetify.breakpoint.mdAndUp"
-      height="300"
       :elevation="4"
       class="pa-8"
       tile
     >
+      <v-row>
+        <v-text-field
+          class="align-start"
+          label="Search Products"
+          @keypress.enter="searchProducts"
+          v-model="search"
+        ></v-text-field>
+        <v-icon @click="searchProducts" class="hidden-sm-and-down"
+          >mdi-magnify</v-icon
+        >
+      </v-row>
+
       <h3>Filters</h3>
       <v-radio-group v-model="priceFilter" :mandatory="true">
         <v-radio
@@ -45,15 +56,30 @@ export default {
     return {
       prices: [
         "Any",
-        "Under RM25.00",
-        "RM25 - RM100",
-        "RM100 - RM500",
-        "Over RM500",
+        "Highest - Lowest",
+        "Lowest - Highest",
       ],
       priceFilter: 0,
       checkBox: true,
+      search: ""
     };
   },
+  watch: {
+    priceFilter(val){
+      this.setFilterEvents(val);
+    }
+  },
+  methods: {
+    searchProducts(){
+      if(this.search){
+        this.$emit("searchingProducts", this.search)
+      }
+    },
+    setFilterEvents(number){
+      let events = number === 0 ? "any" : number === 1 ? "descending" : "ascending";
+      this.$emit("priceFilter", events);
+    }
+  }
 };
 </script>
 

@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products,
+    initialProducts: JSON.parse(JSON.stringify(products)),
     snackbar: {
       show: false,
       variant: 'success',
@@ -14,17 +15,25 @@ export default new Vuex.Store({
     },
     cart: []
   },
+  getters: {
+    getProductsLength(state) {
+      return state.products.length
+    }
+  },
   mutations: {
     addItemToCart(state, payload) {
-      const { itemId, quantity } = payload
+      const { itemId, image, name, price, quantity } = payload
       const idx = state.cart.findIndex((product) => {
         return product.itemId === itemId
       })
       if (idx === -1) {
-        state.cart.push({ itemId, quantity })
+        state.cart.push({ itemId, image, name, price, quantity })
       } else {
-        state.cart[idx].quantity += 1
+        state.cart[idx].quantity = state.cart[idx].quantity + quantity
       }
+    },
+    removeItemFromCart(state, payload) {
+      state.cart = state.cart.filter(item => item.itemId !== payload.itemId)
     },
     updateSnackBar(state, settings) {
       state.snackbar = {

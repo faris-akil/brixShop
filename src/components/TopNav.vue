@@ -1,9 +1,10 @@
 <template>
   <div>
     <v-app-bar app dark>
-      <v-toolbar-title>LazaKIL</v-toolbar-title>
-      <v-spacer></v-spacer>
-
+      <v-toolbar-title>BrixSHOP</v-toolbar-title>
+      <v-spacer>
+        
+      </v-spacer>
       <span class="hidden-sm-and-up">
         <v-btn @click.stop="drawer = !drawer" icon>
           <v-icon>mdi-menu</v-icon>
@@ -38,6 +39,7 @@
 export default {
   data() {
     return {
+      search: '',
       drawer: false,
       items: [
         { title: "Home", link: "/", icon: "home" },
@@ -46,6 +48,16 @@ export default {
       ],
     };
   },
+  methods: {
+    searchProducts(){
+      console.log(this.$route)
+      console.log(this.$router)
+      console.log(Boolean(this.search))
+      if(this.search){
+        this.$router.push({name: "Store/search=", params: { search: this.search}})
+      }
+    }
+  }
 };
 </script>
 

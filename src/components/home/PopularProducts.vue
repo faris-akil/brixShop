@@ -8,7 +8,7 @@
         <v-row>
             <v-col sm="10" offset-sm="1" lg="8" offset-lg="2">
                 <v-row>
-                    <v-col sm="6" md="4" v-for="(product, index) in $store.state.products.slice(0,3)" :key="product.name + index">
+                    <v-col sm="6" md="4" v-for="(product, index) in $store.state.products.slice(0,4)" :key="product.name + index">
                         <VerticalProduct :product="product" :index="index" :addToCart="addToCart" />
                     </v-col>
                 </v-row>

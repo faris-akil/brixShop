@@ -7,7 +7,7 @@
         class="text-center"
         cols="12"
       >
-        &copy; {{ new Date().getFullYear() }} — <strong>LazaKIL</strong>
+        &copy; {{ new Date().getFullYear() }} — <strong>BrixSHOP</strong>
       </v-col>
     </v-footer>
 </template>

@@ -3,7 +3,7 @@
       <v-card outlined>
           <v-card-title>Payment Details</v-card-title>
           <v-card-text>
-              <p>Total: RM999.00</p>
+              <p>Total: RM {{ calculateTotal | twoDecimalPoint }}</p>
               <v-btn color="primary" @click="goToCheckout">Checkout</v-btn>
           </v-card-text>
       </v-card>
@@ -19,6 +19,21 @@ export default {
             name: '',
             emailRules: [],
             email: ''
+        }
+    },
+    filters: {
+        twoDecimalPoint(val){
+            return (Math.round(val * 100) / 100).toFixed(2);
+        }
+    },
+    computed: {
+        calculateTotal(){
+            console.log(this.$store.state.cart)
+            let total = this.$store.state.cart.map(item => item.price * item.quantity)
+            let sum = total.reduce((a,b) => {
+                return a + b
+            }, 0)
+            return sum
         }
     },
     methods: {
